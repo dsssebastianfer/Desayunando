@@ -176,7 +176,7 @@ export default function App() {
 
   const lista = filtrar(personas, { busq: busqueda, area: filtroArea, lugar: filtroLugar, incOtraSede: otraSede, incRemoto: remoto, mes: filtroMes });
   const listaReg = filtrar(personas, { busq: busquedaReg, area: "", lugar: "", incOtraSede: otraSedeReg, incRemoto: remotoReg, mes: "" });
-  const areas = [...new Set(personas.map(p => p.area))].sort();
+  const areas = [...new Set([...personas.map(p => p.area), "ADM INGENIERIA"])].sort();
   const lugares = [...new Set(personas.map(p => p.lugar))].sort();
 
   const inp = { padding: "7px 10px", borderRadius: 8, border: `1px solid ${C.border}`, fontSize: 13, background: C.white, color: C.text, fontFamily: "inherit", outline: "none" };
