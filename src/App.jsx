@@ -342,12 +342,32 @@ export default function App() {
       {modal && (
         <Overlay onClose={() => setModal(null)}>
           <p style={{ margin: "0 0 16px", fontWeight: 500, color: C.text }}>{modal === "add" ? "Agregar persona" : "Editar persona"}</p>
-          {["nombre", "area", "lugar", "condicion"].map(f => (
-            <div key={f} style={{ marginBottom: 12 }}>
-              <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4, textTransform: "capitalize" }}>{f}</label>
-              <input value={form[f]} onChange={e => setForm(x => ({ ...x, [f]: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }} />
-            </div>
-          ))}
+          <div style={{ marginBottom: 12 }}>
+            <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4 }}>Nombre</label>
+            <input value={form.nombre} onChange={e => setForm(x => ({ ...x, nombre: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }} />
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4 }}>Área</label>
+            <select value={form.area} onChange={e => setForm(x => ({ ...x, area: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }}>
+              <option value="">— Seleccionar —</option>
+              {areas.map(a => <option key={a} value={a}>{a}</option>)}
+            </select>
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4 }}>Lugar</label>
+            <select value={form.lugar} onChange={e => setForm(x => ({ ...x, lugar: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }}>
+              <option value="">— Seleccionar —</option>
+              {lugares.map(l => <option key={l} value={l}>{l}</option>)}
+            </select>
+          </div>
+          <div style={{ marginBottom: 12 }}>
+            <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4 }}>Condición</label>
+            <select value={form.condicion} onChange={e => setForm(x => ({ ...x, condicion: e.target.value }))} style={{ ...inp, width: "100%", boxSizing: "border-box" }}>
+              <option value="">Sin condición especial</option>
+              <option value="Remoto">Remoto</option>
+              <option value="Licencia">Licencia</option>
+            </select>
+          </div>
           {modal !== "add" && (
             <div style={{ marginBottom: 12 }}>
               <label style={{ fontSize: 12, color: C.textMid, display: "block", marginBottom: 4 }}>Última participación</label>
